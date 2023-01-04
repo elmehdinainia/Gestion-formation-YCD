@@ -90,7 +90,7 @@ const getFormation = async(req,res) => {
 
 
 
-  
+
 }
 
 
