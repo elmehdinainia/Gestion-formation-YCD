@@ -64,6 +64,7 @@ const path = require('path');
   
  }
  const updateformation = async (req, res) => {
+
                 const {id} = req.params;
                 const { name, description,datedebut,datefin} = req.body;
                 const newFormation = {
@@ -86,7 +87,7 @@ const path = require('path');
   
 }
 const getFormation = async(req,res) => {
-
+res .send("dechebcegc")
 
 
 
