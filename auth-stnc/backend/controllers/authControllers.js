@@ -2,7 +2,7 @@ const bcrypt = require('bcryptjs')
 const storage = require('local-storage')
 const jwt = require('jsonwebtoken')
 require('dotenv').config()
-const User = require('../models/users')
+const User = require('../models/employe')
 const Roles = require('../models/role')
 
 
@@ -47,7 +47,8 @@ const register = async(req,res)=>{
             //validation
             if(email===""||password==="") res.status(400).send("enter your information")
             const user = await User.findOne({email})
-            if(!user) return res.status(400).send('email is already exist')
+
+            if(!user) return res.status(400).send('email or password is  wrong')
             // password is correct 
             const validpass = await bcrypt.compare(password,user.password)
             if(!validpass)res.status(400).send('password is not correct')
@@ -56,6 +57,7 @@ const register = async(req,res)=>{
             console.log(role)
             //create and assign a token
             const token = jwt.sign({_id: user._id},process.env.TOKEN_SECRET)
+            storage('token',token)
             // res.header('auth-token',token).send(token)
             res.json({
                 first_name: user.firstname,

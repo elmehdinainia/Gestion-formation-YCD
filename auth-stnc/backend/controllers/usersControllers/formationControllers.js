@@ -15,6 +15,7 @@ const path = require('path');
             
               }
               // console.log(newProduct);
+              
               //validation des field
               const isformfield = Object.values(newFormation).every((value) => {
                 if (value) {
@@ -87,8 +88,14 @@ const path = require('path');
   
 }
 const getFormation = async(req,res) => {
-res .send("dechebcegc")
+ const getdata = await Formation.find()
+ if(getdata){
+  res.status(200).json({ code: 200, message: "Get Formation",getdata });
 
+ }else{
+
+  throw Error("product is not added");
+}
 
 
 

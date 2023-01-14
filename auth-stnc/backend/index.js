@@ -15,10 +15,20 @@ app.use(express.static('public'))
 
 const authRoute = require('./routes/authRoute')
 const formation = require('./routes/userRoute/formationRoute')
+const organisme = require('./routes/userRoute/organismeRoute')
+const employe = require('./routes/userRoute/employeRoute')
+const admin = require('./routes/userRoute/adminRoute')
+
+
 
 
 app.use('/gestion/auth/user',authRoute )
 app.use('/formation/',formation)
+app.use('/organisme/',organisme)
+app.use('/employe',employe)
+app.use('/admin',admin)
+
+
 
 
 
