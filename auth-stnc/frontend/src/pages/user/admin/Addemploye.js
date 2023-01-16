@@ -259,13 +259,13 @@ function Addemploye() {
                 >
                   {User.firstname}
                 </th>
-                <td class="py-4 px-6">{User.lastname}</td>
+                 <td class="py-4 px-6">{User.lastname}</td>
                 <td class="py-4 px-6">{User.phone}</td>
                 <td class="py-4 px-6">{User.email}</td>
-                <td class="py-4 px-6">{User.organisme[0].name}</td>
+                  <td class="py-4 px-6">{User.organisme[0]?User.organisme[0].name :""}</td> 
                 <td class="py-4 px-6">
                   {User.formation[0] ? User.formation[0].name : ""}
-                </td>
+                </td>  
                 <td class="py-4 px-6 flex text-right">
                   <button
                     className="text-black text-xl mr-3"
