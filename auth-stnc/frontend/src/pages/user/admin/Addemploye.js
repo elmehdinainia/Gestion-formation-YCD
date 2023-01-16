@@ -68,14 +68,11 @@ function Addemploye() {
   };
   const submit = async (e) => {
     e.preventDefault();
-    console.log(data);
 
     await axios
       .post(`${basadmin}/addemploye`, data)
       .then((res) => {
-        window.location.reload(false);
-
-        console.log("res");
+         console.log(res.data)
         showUsers();
       })
       .catch((error) => {
@@ -88,7 +85,8 @@ function Addemploye() {
       .delete(`${basadmin}/deleteemploye/${id}`)
       .then((e) => {
         console.log("success");
-        window.location.reload(false);
+        showUsers();
+
       })
       .catch((err) => {
         console.log("error", err);
@@ -407,7 +405,7 @@ function Addemploye() {
                       <Button
                         type="submit"
                         className="text-gray-900 hover:text-white border border-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg w-full text-sm px-1.5 text-center mr-2 mb-2 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800"
-                        btn="Create Repas"
+                        btn="Create employe"
                       />
                     </div>
                   </form>

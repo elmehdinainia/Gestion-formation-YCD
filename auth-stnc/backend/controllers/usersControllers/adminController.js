@@ -1,4 +1,6 @@
 const User = require("../../models/employe");
+const Formation = require("../../models/formation");
+const Organisme = require("../../models/organisme");
 const bcrypt = require('bcryptjs')
 const Historique = require("../../models/historique");
 
@@ -102,5 +104,11 @@ const deleteemploye = async(req, res) => {
   
 
 }
+const statistique = async (req,res)=>{
+  const user = await User.find().count()
+  const formation = await Formation.find().count()
+  const organisme = await Organisme.find().count()
+  res.json({user,formation,organisme})
+}
 
-module.exports = { editemploye, addemploye ,deleteemploye};
+module.exports = { editemploye, addemploye ,deleteemploye,statistique};

@@ -2,6 +2,9 @@ const bcrypt = require('bcryptjs')
 const User = require('../../models/employe')
 const Organismes = require('../../models/organisme')
 const formations = require('../../models/formation')
+const Storage = require('local-storage')
+const jwt = require('jsonwebtoken')
+const { populate } = require('../../models/employe')
 
 
 
@@ -23,9 +26,21 @@ const getemploye= async (req, res) => {
 
 }
 
+const getFormation = async(req, res) => {
+  const token = Storage('token')
+  if(token){
+    const token_user = await jwt.verify(token, process.env.TOKEN_SECRET)
+    if(token_user){
+      const user = await User.findById({_id: token_user._id})
+      .populate('organisme').populate('formation')
+      res.json({user:user})
+    }
+  }
+}
+
 
 
 
 
 // get data findOne
-module.exports = {getemploye}
+module.exports = {getemploye, getFormation}

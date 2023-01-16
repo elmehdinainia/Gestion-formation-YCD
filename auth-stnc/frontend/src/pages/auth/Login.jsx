@@ -19,7 +19,7 @@ import { Link, useNavigate } from 'react-router-dom';
         // console.log(user)
         Axios.post(`${baseUrl}/login`, user)
           .then(res => {
-           console.log(res.data)
+          //  console.log(res.data)
 
             // toast.warn('🦄 ' + res.data, {
             //   position: "top-center",
@@ -39,16 +39,12 @@ import { Link, useNavigate } from 'react-router-dom';
               localStorage.setItem("last_name", res.data.last_name)
               localStorage.setItem("role", res.data.role)
             }
-    
-            const role = res.data.role
-    
-      
-             if (role === 'livreur') {
-              navigate('/dashboard/employe')
-            }
-            if(role === 'admin') {
-              navigate('/dashboard/admin')
-            }
+
+            const role = localStorage.getItem('role')
+
+            if(role){
+                navigate(`/dashboard/${role}`)
+              }
     
           })
           .catch(err => {
@@ -56,9 +52,7 @@ import { Link, useNavigate } from 'react-router-dom';
           })
       }
     
-
-  return (
-
+return (
        
 <div className="w-9/12 "  >
       <form onSubmit={onSubmit} className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 animateanimated animatebounce">
@@ -79,7 +73,7 @@ import { Link, useNavigate } from 'react-router-dom';
               </div>
               <div className="flex justify-between items-center mb-6">
         
-                <a href="/" className="text-white  text-blue-500">Create acount ?</a>
+                <a href="/" className="text-white ">Create acount ?</a>
               </div>
               <div className="text-center lg:text-left">
             <Button className="text-white bg-gradient-to-br fs-10 from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 block w-full " btn="button"/>

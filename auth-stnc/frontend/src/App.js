@@ -27,7 +27,8 @@ function App() {
                     {/* { employe } */}
 
           <Route path='/dashboard/employe' element={<Dashboards />}>
-                     <Route path='' element={<Showinformation />} />
+                <Route path='' element={<Showinformation />} />
+                
           </Route>
                       {/* { Manager } */}
 

@@ -31,7 +31,7 @@ const Dashboard = () => {
 
   const MenusEmploye = [
     { title: "Dashboad", route: '' },
-    { title: "showinfo", gap: true, route: 'showinformation' },
+    { title: "showinfo", gap: true, route: '' },
     { title: "Setting", gap: true, route: 'setting' },
   ]
 
@@ -40,7 +40,6 @@ const Dashboard = () => {
     { title: "Formation",icons:<GiStarFormation/>,gap: true, route: 'Formation' },
     { title: "Organisme",icons:<CgOrganisation/>,gap: true, route: 'Organisme' },
     { title: "Addemploye",icons:<FaUserAlt/>, gap: true,route: 'Addemploye' },
-    { title: "historique",icons:<FaHistory/>, gap: true,route: 'historique' },
     { title: "Setting" , icons:<GiStarFormation/>,gap: true,route: 'setting' },
   ]
 
@@ -95,7 +94,7 @@ const Dashboard = () => {
 
         </div>
         <div className="p-3 px-5 text-2xl font-semibold flex-1 h-screen">
-          <nav className={`${open ? 'ml-80' : 'ml-20'} ml-96 duration-300  hover:bg-black ml-20 text-white border-gray-200 px-2 rounded-xl sm:px-4 py-2.5 dark:bg-gray-900`}>
+          <nav className={`${open ? 'ml-80' : 'ml-20'} ml-96 duration-300  hover:bg-black  text-white border-gray-200 px-2 rounded-xl sm:px-4 py-2.5 dark:bg-gray-900`}>
             <div className="container flex flex-wrap items-center justify-between mx-auto ">
               <a href="#" className="flex items-center">
                 <img src={image} className="h-6 mr-3 sm:h-9" alt="Marhaba Logo" />
@@ -116,8 +115,8 @@ const Dashboard = () => {
             
           </nav>
 
-          {<Outlet />}
 
+          <Outlet />
           </div>
 
           </div>

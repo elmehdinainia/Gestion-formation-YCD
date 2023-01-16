@@ -48,13 +48,12 @@ const register = async(req,res)=>{
             if(email===""||password==="") res.status(400).send("enter your information")
             const user = await User.findOne({email})
 
-            if(!user) return res.status(400).send('email or password is  wrong')
+            if(!user) return res.send('email or password is  wrong')
             // password is correct 
             const validpass = await bcrypt.compare(password,user.password)
-            if(!validpass)res.status(400).send('password is not correct')
+            if(!validpass)res.send('password is not correct')
             //creation de role 
             const role = await Roles.findById({ _id: user.role })
-            console.log(role)
             //create and assign a token
             const token = jwt.sign({_id: user._id},process.env.TOKEN_SECRET)
             storage('token',token)

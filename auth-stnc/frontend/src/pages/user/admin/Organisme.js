@@ -29,7 +29,7 @@ export default function Organisme() {
     const Data = {
       ...addOrg
     }
-    await axios.post(`${baseUrl}/addorganisme`,Data)
+    await axios.post(`${baseUrl}/addorganisme`,addOrg)
     .then((res) =>{
       window.location.reload(false)
 
@@ -77,7 +77,7 @@ const handeledit = (e) =>{
   setedit({...edit, [e.target.name]: valeur})
 }
   
-const submitedit = async() =>{
+const submitedite = async() =>{
   
   await axios.put(`${baseUrl}/updateorganisme/${edit._id}`,{...edit})
   .then((res) =>{
@@ -89,18 +89,17 @@ const submitedit = async() =>{
 }
 const [imgedit, setImgedit] = useState()  
   
-const editmeal = async() =>{
+const submitedit = async() =>{
  const dataedit = new FormData()
- dataedit.append('name', editRepas.name)
- dataedit.append('description', editRepas.description)
- dataedit.append('price', editRepas.price)
- dataedit.append('category', editRepas.category)
+ dataedit.append('name', edit.name)
+ dataedit.append('description', edit.description)
+ dataedit.append('price', edit.price)
+ dataedit.append('category', edit.category)
  dataedit.append('images', imgedit)
- await axios.put(`${baseURL}/updateproduct/${editRepas._id}`,dataedit)
+ await axios.put(`${baseUrl}/updateproduct/${edit._id}`,dataedit)
  .then((res) =>{
    console.log(res.data)
-   affichagrepas()
-   affichcategory()
+   showorganisme()
    toast.success(res.data)
  }) 
  .catch ((error)=>{
@@ -287,7 +286,7 @@ const editmeal = async() =>{
                 </div>
                 <div className="flex justify-center p-6 border-t border-solid border-slate-200 rounded-b">
                   <Button type='button' className='text-gray-900 hover:text-white border border-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg w-full text-sm px-2 py-2.5 text-center mr-2 mb-2 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800' onclick={() => setShowModaledit(false)} btn='Close' />
-                  <button type='button' onClick={submitedit}  className='text-gray-900 hover:text-white border border-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg w-full text-sm px-1.5 text-center mr-2 mb-2 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800'>valider</button>
+                  <button type='button' onClick={submitedite}  className='text-gray-900 hover:text-white border border-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg w-full text-sm px-1.5 text-center mr-2 mb-2 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800'>valider</button>
                 </div>
               </form>
             </div>
